@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Pegawai Kereta Api Indonesia</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 2.5rem;
+            color: #333;
+        }
+        
+
+        table {
+            width: 80%;
+            margin: 30px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease-out;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: center;
+            font-size: 1rem;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: blue;
+            color:white;
+            font-weight: bold;
+        }
+
+        td {
+            background-color: orange;
+        }
+
+        tr:hover {
+            background-color: #e2f7e2;
+            cursor: pointer;
+            transform: scale(1.02);
+            transition: all 0.2s ease;
+        }
+
+        /* Animasi untuk tabel */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Animasi untuk menampilkan data baris satu per satu */
+        tr {
+            animation: fadeRow 0.5s ease-out;
+        }
+
+        @keyframes fadeRow {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        @media (max-width: 768px) {
+            table {
+                width: 100%;
+            }
+            th, td {
+                padding: 8px 10px;
+                font-size: 0.9rem;
+            }
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Data Pegawai Kereta Api Indonesia</h1>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID Pegawai</th>
+                    <th>Nama</th>
+                    <th>Jabatan</th>
+                    <th>Divisi</th>
+                    <th>Usia</th>
+                </tr>
+            </thead>
+            <tbody id="pegawaiTable">
+                <!-- Data pegawai akan ditampilkan di sini -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Data pegawai disimpan dalam array 2 dimensi
+        var pegawai = [
+            [1, "Andi", "Masinis", "Operasional", 30],
+            [2, "Budi", "Petugas Tiket", "Pelayanan", 28],
+            [3, "Citra", "Pramugari", "Pelayanan", 25],
+            [4, "Dani", "Pengawas", "Keamanan", 35],
+            [5, "Eka", "Admin", "Administrasi", 29]
+        ];
+
+        // Menampilkan data pegawai ke dalam tabel
+        var tableBody = document.getElementById("pegawaiTable");
+        
+        pegawai.forEach(function(pegawaiData, index) {
+            var row = document.createElement("tr");
+            
+            pegawaiData.forEach(function(data) {
+                var cell = document.createElement("td");
+                cell.textContent = data;
+                row.appendChild(cell);
+            });
+            
+            tableBody.appendChild(row);
+        });
+    </script>
+
+</body>
+</html>
